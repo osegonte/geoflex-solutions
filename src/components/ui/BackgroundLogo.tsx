@@ -1,12 +1,15 @@
 export default function BackgroundLogo() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Large background logo - just the icon part */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03]">
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* Background logo - moved DOWN further */}
+      <div 
+        className="absolute top-1/2 right-0 w-1/2 h-full flex items-center justify-center" 
+        style={{ transform: 'translateY(calc(-50% + 100px))' }}
+      >
         <img 
-          src="/logo.png" 
+          src="/logo-icon.svg" 
           alt="" 
-          className="w-[500px] h-auto"
+          className="w-[500px] lg:w-[600px] h-auto opacity-[0.04]"
         />
       </div>
     </div>

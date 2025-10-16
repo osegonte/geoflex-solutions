@@ -51,27 +51,24 @@
   
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.75rem;         /* 60px */
-    font-weight: 600;
+    font-size: 4rem;              /* 64px - slightly bigger */
+    font-weight: 700;             /* Bolder: 600 → 700 */
     line-height: 1.15;
     letter-spacing: -0.02em;
     @apply text-primary;
   }
   
   @media (max-width: 768px) {
-    h1 { font-size: 2.25rem; }  /* 36px mobile */
+    h1 { font-size: 2.25rem; }    /* 36px mobile */
   }
 }
 
 @layer utilities {
-  /* ROSENFELD EXACT SPACING: 48px desktop, 24px mobile */
   .container-rosenfeld {
     @apply px-6 lg:px-12;
-    /* 24px mobile (px-6), 48px desktop (px-12) */
   }
   
   .content-max {
     @apply max-w-3xl;
-    /* Max width for content (~768px) */
   }
 }

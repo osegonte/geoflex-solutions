@@ -8,13 +8,13 @@ export default function Header() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50"
     >
-      <div className="container-rosenfeld h-20 flex items-center justify-between">
-        {/* Left: Logo PNG */}
+      <div className="container-rosenfeld h-24 flex items-center justify-between">
+        {/* Logo - DOUBLED from h-16 to h-32 (128px) */}
         <a href="/" className="flex items-center">
           <img 
-            src="/logo.png" 
+            src="/logo.svg" 
             alt="Geoflex Solutions" 
-            className="h-10"
+            className="h-32 w-auto"
           />
         </a>
         
