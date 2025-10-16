@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 210 53% 16%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 20 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --highlight: 20 95% 53%;
+    --highlight-foreground: 0 0% 100%;
+    
+    --background: 0 0% 100%;
+    --foreground: 0 0% 33%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 210 53% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 53% 16%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 210 53% 16%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 20 95% 53%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 0.5rem;
+    --shadow-soft: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-strong: 0 10px 25px rgb(0 0 0 / 0.15);
+  }
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.75rem;         /* 60px */
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    @apply text-primary;
+  }
+  
+  @media (max-width: 768px) {
+    h1 { font-size: 2.25rem; }  /* 36px mobile */
+  }
+}
+
+@layer utilities {
+  /* ROSENFELD EXACT SPACING: 48px desktop, 24px mobile */
+  .container-rosenfeld {
+    @apply px-6 lg:px-12;
+    /* 24px mobile (px-6), 48px desktop (px-12) */
+  }
+  
+  .content-max {
+    @apply max-w-3xl;
+    /* Max width for content (~768px) */
+  }
+}
