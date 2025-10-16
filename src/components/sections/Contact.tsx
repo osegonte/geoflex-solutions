@@ -11,7 +11,7 @@ export default function Contact() {
 
   return (
     <>
-      <section className="py-24 lg:py-32 bg-white">
+      <section id="contact" className="py-24 lg:py-32 bg-white">
         <div className="container-rosenfeld">
           <motion.div
             initial="hidden"

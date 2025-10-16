@@ -1,4 +1,15 @@
 export default function Footer() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's a hash link (scroll anchor), prevent default and smooth scroll
+    if (href.startsWith('#')) {
+      e.preventDefault()
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
   return (
     <footer className="bg-primary text-white">
       <div className="container-rosenfeld py-16">
@@ -15,10 +26,58 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/about" className="text-white/70 hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="/services" className="text-white/70 hover:text-accent transition-colors">Services</a></li>
-              <li><a href="/insights" className="text-white/70 hover:text-accent transition-colors">Insights</a></li>
-              <li><a href="/contact" className="text-white/70 hover:text-accent transition-colors">Contact</a></li>
+              <li>
+                <a 
+                  href="#about" 
+                  onClick={(e) => handleNavClick(e, '#about')}
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#services" 
+                  onClick={(e) => handleNavClick(e, '#services')}
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/careers" 
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#partners" 
+                  onClick={(e) => handleNavClick(e, '#partners')}
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  Partners
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/insights" 
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  Insights
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#contact" 
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="text-white/70 hover:text-accent transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 

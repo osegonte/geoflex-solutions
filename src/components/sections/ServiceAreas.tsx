@@ -24,7 +24,7 @@ const locations = [
 
 export default function ServiceAreas() {
   return (
-    <section className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
+    <section id="service-areas" className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
       <div className="container-rosenfeld">
         <motion.div
           initial="hidden"

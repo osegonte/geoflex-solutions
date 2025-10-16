@@ -20,7 +20,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 lg:py-32 bg-white">
+    <section id="testimonials" className="py-24 lg:py-32 bg-white">
       <div className="container-rosenfeld">
         <motion.div
           initial="hidden"

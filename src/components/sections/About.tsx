@@ -11,11 +11,22 @@ const fadeInLeft = {
 }
 
 export default function About() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's a hash link (scroll anchor), prevent default and smooth scroll
+    if (href.startsWith('#')) {
+      e.preventDefault()
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }
+
   return (
-    <section className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
+    <section id="about" className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
       <div className="container-rosenfeld">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* LEFT: Placeholder Image - SHORTER HEIGHT */}
+          {/* LEFT: Placeholder Image */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -29,7 +40,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* RIGHT: Content (Left-aligned) */}
+          {/* RIGHT: Content */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -59,9 +70,24 @@ export default function About() {
               patients and their families.
             </p>
             
-            <div className="pt-4">
-              <a href="/about" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300">
-                Learn More About Us
+            {/* Two CTAs - Drive With Us + Become a Partner */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <a 
+                href="/careers" 
+                className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300"
+              >
+                Drive With Us
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              
+              <a 
+                href="#partners"
+                onClick={(e) => handleNavClick(e, '#partners')}
+                className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300"
+              >
+                Become a Partner
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

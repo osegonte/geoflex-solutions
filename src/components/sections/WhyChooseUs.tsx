@@ -31,7 +31,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
+    <section id="why-choose-us" className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
       <div className="container-rosenfeld">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* LEFT: Content */}

@@ -45,7 +45,7 @@ export default function Hero() {
               <span className="text-accent">With Care That Moves You</span>
             </motion.h1>
             
-            {/* Tagline - MOVED RIGHT to align under "With Care That Moves You" */}
+            {/* Tagline */}
             <motion.p 
               variants={fadeInUp}
               transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -54,7 +54,7 @@ export default function Hero() {
               Safe · Punctual · Compassionate
             </motion.p>
             
-            {/* CTAs - MOVED DOWN slightly (increased gap) */}
+            {/* CTAs - UPDATED SECOND BUTTON */}
             <motion.div 
               variants={fadeInUp}
               transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -71,16 +71,18 @@ export default function Hero() {
                 Book a Ride
               </motion.button>
               
-              <motion.button
+              {/* UPDATED BUTTON - Join Us as a Driver */}
+              <motion.a
+                href="/careers"
                 whileHover={{ 
                   y: -2, 
                   backgroundColor: 'rgb(43 63 92 / 0.03)' 
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="h-14 px-10 bg-white border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all text-base"
+                className="h-14 px-10 bg-white border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all text-base flex items-center justify-center"
               >
-                For Healthcare Partners
-              </motion.button>
+                Join Us as a Driver
+              </motion.a>
             </motion.div>
             
             {/* Supporting Text */}
