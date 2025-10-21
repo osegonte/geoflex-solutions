@@ -8,6 +8,32 @@ const fadeInUp = {
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    const form = e.currentTarget
+    
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      
+      alert('Thank you for contacting us! We will get back to you shortly.')
+      form.reset()
+      setIsModalOpen(false)
+    } catch (error) {
+      alert('There was an error sending your message. Please try emailing us directly at info@geoflexsolutions.com')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -172,7 +198,17 @@ export default function Contact() {
                 </div>
 
                 {/* Modal Body - Form */}
-                <form className="p-6 space-y-5">
+                <form 
+                  action="https://formsubmit.co/info@geoflexsolutions.com"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="p-6 space-y-5"
+                >
+                  {/* Hidden FormSubmit Configuration */}
+                  <input type="hidden" name="_subject" value="New Contact Form Submission - Geoflex Solutions" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+
                   <div>
                     <label htmlFor="modal-name" className="block text-sm font-semibold text-primary mb-2">
                       Full Name *
@@ -238,9 +274,10 @@ export default function Contact() {
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all"
+                      disabled={isSubmitting}
+                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
                   </div>
                 </form>

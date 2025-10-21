@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -11,14 +12,29 @@ const fadeInLeft = {
 }
 
 export default function About() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // If it's a hash link (scroll anchor), prevent default and smooth scroll
+    e.preventDefault()
+    
     if (href.startsWith('#')) {
-      e.preventDefault()
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const element = document.querySelector(href)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+      } else {
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
       }
+    } else {
+      navigate(href)
     }
   }
 
@@ -74,6 +90,7 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a 
                 href="/careers" 
+                onClick={(e) => handleNavClick(e, '/careers')}
                 className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300"
               >
                 Drive With Us

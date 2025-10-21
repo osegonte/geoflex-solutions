@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import BackgroundLogo from '../ui/BackgroundLogo'
 
 const fadeInUp = {
@@ -18,6 +19,8 @@ const staggerContainer = {
 }
 
 export default function Hero() {
+  const navigate = useNavigate()
+
   return (
     <section className="min-h-screen flex items-center bg-white relative overflow-hidden">
       {/* Background Logo */}
@@ -54,11 +57,11 @@ export default function Hero() {
               Safe · Punctual · Compassionate
             </motion.p>
             
-            {/* CTAs - UPDATED SECOND BUTTON */}
+            {/* CTAs - Mobile Optimized */}
             <motion.div 
               variants={fadeInUp}
               transition={{ duration: 0.8, ease: 'easeOut' }}
-              className="flex flex-col sm:flex-row gap-4 items-start pt-4"
+              className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-start pt-4"
             >
               <motion.button
                 whileHover={{ 
@@ -71,9 +74,8 @@ export default function Hero() {
                 Book a Ride
               </motion.button>
               
-              {/* UPDATED BUTTON - Join Us as a Driver */}
-              <motion.a
-                href="/careers"
+              <motion.button
+                onClick={() => navigate('/careers')}
                 whileHover={{ 
                   y: -2, 
                   backgroundColor: 'rgb(43 63 92 / 0.03)' 
@@ -82,7 +84,7 @@ export default function Hero() {
                 className="h-14 px-10 bg-white border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all text-base flex items-center justify-center"
               >
                 Join Us as a Driver
-              </motion.a>
+              </motion.button>
             </motion.div>
             
             {/* Supporting Text */}

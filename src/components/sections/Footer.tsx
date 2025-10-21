@@ -1,12 +1,29 @@
+import { useNavigate, useLocation } from 'react-router-dom'
+
 export default function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // If it's a hash link (scroll anchor), prevent default and smooth scroll
+    e.preventDefault()
+    
     if (href.startsWith('#')) {
-      e.preventDefault()
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const element = document.querySelector(href)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+      } else {
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
       }
+    } else {
+      navigate(href)
     }
   }
 
@@ -46,7 +63,8 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="/careers" 
+                  href="/careers"
+                  onClick={(e) => handleNavClick(e, '/careers')}
                   className="text-white/70 hover:text-accent transition-colors"
                 >
                   Careers
@@ -63,7 +81,8 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="/insights" 
+                  href="/insights"
+                  onClick={(e) => handleNavClick(e, '/insights')}
                   className="text-white/70 hover:text-accent transition-colors"
                 >
                   Insights

@@ -22,6 +22,32 @@ const partners = {
 
 export default function Partners() {
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    const form = e.currentTarget
+    
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      
+      alert('Thank you for your partnership inquiry! We will contact you within 48 hours.')
+      form.reset()
+      setIsInquiryModalOpen(false)
+    } catch (error) {
+      alert('There was an error submitting your inquiry. Please try emailing us directly at info@geoflexsolutions.com')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -148,7 +174,7 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Partner Inquiry Modal - keeping same as before */}
+      {/* Partner Inquiry Modal */}
       <AnimatePresence>
         {isInquiryModalOpen && (
           <>
@@ -186,7 +212,17 @@ export default function Partners() {
                 </div>
 
                 {/* Modal Body - Form */}
-                <form className="p-6 space-y-5">
+                <form 
+                  action="https://formsubmit.co/info@geoflexsolutions.com"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="p-6 space-y-5"
+                >
+                  {/* Hidden FormSubmit Configuration */}
+                  <input type="hidden" name="_subject" value="New Partnership Inquiry - Geoflex Solutions" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+
                   <div>
                     <label htmlFor="facility-name" className="block text-sm font-semibold text-primary mb-2">
                       Facility/Organization Name *
@@ -302,9 +338,10 @@ export default function Partners() {
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all"
+                      disabled={isSubmitting}
+                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Inquiry
+                      {isSubmitting ? 'Sending...' : 'Send Inquiry'}
                     </button>
                   </div>
                 </form>

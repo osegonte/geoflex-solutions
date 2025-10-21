@@ -1,28 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/layout/Header'
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Services from './components/sections/Services'
-import WhyChooseUs from './components/sections/WhyChooseUs'
-import Partners from './components/sections/Partners'
-import Testimonials from './components/sections/Testimonials'
-import ServiceAreas from './components/sections/ServiceAreas'
-import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
+import Home from './pages/Home'
+import Careers from './pages/Careers'
+import Insights from './pages/Insights'  // ADD THIS
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <WhyChooseUs />
-      <Partners />
-      <Testimonials />
-      <ServiceAreas />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/insights" element={<Insights />} />  {/* ADD THIS */}
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
