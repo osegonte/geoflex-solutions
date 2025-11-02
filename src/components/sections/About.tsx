@@ -42,7 +42,7 @@ export default function About() {
     <section id="about" className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
       <div className="container-rosenfeld">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* LEFT: Placeholder Image */}
+          {/* LEFT: Image - UPDATED */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -51,8 +51,12 @@ export default function About() {
             variants={fadeInLeft}
             className="w-full lg:w-2/5 flex-shrink-0"
           >
-            <div className="h-[400px] bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl flex items-center justify-center">
-              <p className="text-muted-foreground font-medium">Image Placeholder</p>
+            <div className="h-[400px] rounded-2xl overflow-hidden shadow-medium">
+              <img 
+                src="/images/about-section.jpg" 
+                alt="Geoflex Solutions medical transportation services"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
 

@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
             </div>
           </motion.div>
 
-          {/* RIGHT: Placeholder Image */}
+          {/* RIGHT: Image - UPDATED */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -88,8 +88,12 @@ export default function WhyChooseUs() {
             variants={fadeInRight}
             className="w-full lg:w-2/5 flex-shrink-0"
           >
-            <div className="h-[500px] bg-gradient-to-br from-accent/10 to-primary/10 rounded-2xl flex items-center justify-center">
-              <p className="text-muted-foreground font-medium">Image Placeholder</p>
+            <div className="h-[500px] rounded-2xl overflow-hidden shadow-medium">
+              <img 
+                src="/images/why-choose-us.jpg" 
+                alt="Geoflex Solutions modern medical transport fleet"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
         </div>

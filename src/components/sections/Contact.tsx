@@ -8,32 +8,6 @@ const fadeInUp = {
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    const form = e.currentTarget
-    
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      
-      alert('Thank you for contacting us! We will get back to you shortly.')
-      form.reset()
-      setIsModalOpen(false)
-    } catch (error) {
-      alert('There was an error sending your message. Please try emailing us directly at info@geoflexsolutions.com')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <>
@@ -160,7 +134,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* CONTACT MODAL WITH GOOGLE FORM */}
       <AnimatePresence>
         {isModalOpen && (
           <>
@@ -180,12 +154,17 @@ export default function Contact() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setIsModalOpen(false)
+                }
+              }}
             >
-              <div className="bg-white rounded-2xl shadow-strong max-w-lg w-full max-h-[90vh] overflow-y-auto">
+              <div className="bg-white rounded-2xl shadow-strong w-full max-w-2xl h-[85vh] flex flex-col overflow-hidden relative">
                 {/* Modal Header */}
-                <div className="flex items-center justify-between p-6 border-b border-border">
+                <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0 bg-white relative z-10">
                   <h3 className="text-2xl font-serif font-semibold text-primary">
-                    Send Us a Message
+                    Contact Us
                   </h3>
                   <button
                     onClick={() => setIsModalOpen(false)}
@@ -197,90 +176,43 @@ export default function Contact() {
                   </button>
                 </div>
 
-                {/* Modal Body - Form */}
-                <form 
-                  action="https://formsubmit.co/info@geoflexsolutions.com"
-                  method="POST"
-                  onSubmit={handleSubmit}
-                  className="p-6 space-y-5"
-                >
-                  {/* Hidden FormSubmit Configuration */}
-                  <input type="hidden" name="_subject" value="New Contact Form Submission - Geoflex Solutions" />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
-
-                  <div>
-                    <label htmlFor="modal-name" className="block text-sm font-semibold text-primary mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="modal-name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-phone" className="block text-sm font-semibold text-primary mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="modal-phone"
-                      name="phone"
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="(123) 456-7890"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-email" className="block text-sm font-semibold text-primary mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="modal-email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-message" className="block text-sm font-semibold text-primary mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="modal-message"
-                      name="message"
-                      rows={5}
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us how we can help you..."
-                    />
-                  </div>
-
-                  <div className="flex gap-3 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setIsModalOpen(false)}
-                      className="flex-1 h-12 border-2 border-border text-foreground font-semibold rounded-lg hover:bg-muted transition-all"
+                {/* Modal Body - GOOGLE FORM WITH HIDDEN SCROLLBAR */}
+                <div className="flex-1 relative overflow-hidden rounded-b-2xl">
+                  <style>
+                    {`
+                      .contact-form-container {
+                        overflow-y: scroll;
+                        scrollbar-width: none;
+                        -ms-overflow-style: none;
+                      }
+                      .contact-form-container::-webkit-scrollbar {
+                        display: none;
+                      }
+                    `}
+                  </style>
+                  <div className="absolute inset-0 overflow-y-scroll pr-4 contact-form-container">
+                    <iframe 
+                      src="https://docs.google.com/forms/d/e/1FAIpQLSdEsr6rt6QrDRCU5gCTAwyQpaIvDAgWUiEJwCTR38X_76bHFg/viewform?embedded=true"
+                      width="100%" 
+                      height="1352"
+                      frameBorder={0}
+                      marginHeight={0}
+                      marginWidth={0}
+                      scrolling="no"
+                      className="w-full"
+                      title="Contact Us Form"
+                      style={{ 
+                        border: 'none',
+                        display: 'block'
+                      }}
                     >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </button>
+                      Loading…
+                    </iframe>
                   </div>
-                </form>
+                  
+                  {/* White overlay to cover scrollbar area */}
+                  <div className="absolute top-0 right-0 w-4 h-full bg-white pointer-events-none rounded-br-2xl z-20" />
+                </div>
               </div>
             </motion.div>
           </>

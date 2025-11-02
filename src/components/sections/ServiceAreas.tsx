@@ -101,9 +101,18 @@ export default function ServiceAreas() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
           variants={fadeInUp}
-          className="h-[300px] bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 rounded-2xl flex items-center justify-center border border-border/50"
+          className="rounded-2xl overflow-hidden border border-border/50 shadow-medium"
         >
-          <p className="text-muted-foreground font-medium">Map Placeholder (TX & MS)</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.234567890123!2d-95.55217990000001!3d30.078889900000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2s6710%20Spring%20Stuebner%20Rd%2C%20Spring%2C%20TX%2077389!5e1!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+            width="100%"
+            height="500"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Geoflex Solutions - Spring, Texas Office"
+          />
         </motion.div>
       </div>
     </section>

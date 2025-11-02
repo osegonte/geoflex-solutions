@@ -22,32 +22,6 @@ const partners = {
 
 export default function Partners() {
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    const form = e.currentTarget
-    
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      
-      alert('Thank you for your partnership inquiry! We will contact you within 48 hours.')
-      form.reset()
-      setIsInquiryModalOpen(false)
-    } catch (error) {
-      alert('There was an error submitting your inquiry. Please try emailing us directly at info@geoflexsolutions.com')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <>
@@ -98,9 +72,6 @@ export default function Partners() {
                 >
                   <div className="p-4 bg-primary rounded-2xl hover:shadow-medium transition-all duration-300 group cursor-pointer">
                     <div className="w-40 h-16 flex items-center justify-center mx-auto">
-                      {/* TO REPLACE WITH LOGO: Swap the span below with:
-                          <img src={`/partners/${partner.id}.svg`} alt={partner.name} className="h-10 w-auto grayscale group-hover:grayscale-0 transition-all duration-300" />
-                      */}
                       <span className="text-base font-semibold text-white group-hover:text-accent font-sans transition-colors duration-300">
                         {partner.name}
                       </span>
@@ -136,9 +107,6 @@ export default function Partners() {
                 >
                   <div className="h-full p-4 bg-primary rounded-2xl hover:shadow-medium transition-all duration-300 group cursor-pointer">
                     <div className="w-32 h-16 flex items-center justify-center mx-auto">
-                      {/* TO REPLACE WITH LOGO: Swap the span below with:
-                          <img src={`/partners/${partner.id}.svg`} alt={partner.name} className="h-10 w-auto grayscale group-hover:grayscale-0 transition-all duration-300" />
-                      */}
                       <span className="text-sm font-semibold text-white group-hover:text-accent font-sans text-center leading-tight transition-colors duration-300">
                         {partner.name}
                       </span>
@@ -174,7 +142,7 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Partner Inquiry Modal */}
+      {/* Partner Inquiry Modal - ABSOLUTELY NO SCROLLBAR */}
       <AnimatePresence>
         {isInquiryModalOpen && (
           <>
@@ -194,10 +162,15 @@ export default function Partners() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setIsInquiryModalOpen(false)
+                }
+              }}
             >
-              <div className="bg-white rounded-2xl shadow-strong max-w-lg w-full max-h-[90vh] overflow-y-auto">
-                {/* Modal Header */}
-                <div className="flex items-center justify-between p-6 border-b border-border">
+              <div className="bg-white rounded-2xl shadow-strong w-full max-w-2xl h-[85vh] flex flex-col overflow-hidden relative">
+                {/* Modal Header - FIXED */}
+                <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0 bg-white relative z-10">
                   <h3 className="text-2xl font-serif font-semibold text-primary">
                     Partnership Inquiry
                   </h3>
@@ -211,140 +184,48 @@ export default function Partners() {
                   </button>
                 </div>
 
-                {/* Modal Body - Form */}
-                <form 
-                  action="https://formsubmit.co/info@geoflexsolutions.com"
-                  method="POST"
-                  onSubmit={handleSubmit}
-                  className="p-6 space-y-5"
-                >
-                  {/* Hidden FormSubmit Configuration */}
-                  <input type="hidden" name="_subject" value="New Partnership Inquiry - Geoflex Solutions" />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
-
-                  <div>
-                    <label htmlFor="facility-name" className="block text-sm font-semibold text-primary mb-2">
-                      Facility/Organization Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="facility-name"
-                      name="facilityName"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="Memorial Hospital"
-                    />
+                {/* Modal Body - IFRAME WITH OVERLAY TO HIDE SCROLLBAR */}
+                <div className="flex-1 relative overflow-hidden rounded-b-2xl">
+                  {/* Iframe container with hidden scrollbar */}
+                  <div 
+                    className="absolute inset-0 overflow-y-scroll pr-4"
+                    style={{
+                      scrollbarWidth: 'none',
+                      msOverflowStyle: 'none',
+                      WebkitOverflowScrolling: 'touch'
+                    }}
+                  >
+                    <style>
+                      {`
+                        .iframe-scroll-container::-webkit-scrollbar {
+                          display: none;
+                        }
+                      `}
+                    </style>
+                    <div className="iframe-scroll-container">
+                      <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSd1HtgnE4-EiV82S14AmxzXD_7-tnILUyHU8UsGwnWjZxxkAQ/viewform?embedded=true"
+                        width="100%" 
+                        height="1600"
+                        frameBorder={0}
+                        marginHeight={0}
+                        marginWidth={0}
+                        scrolling="no"
+                        className="w-full"
+                        title="Partnership Inquiry Form"
+                        style={{ 
+                          border: 'none',
+                          display: 'block'
+                        }}
+                      >
+                        Loading…
+                      </iframe>
+                    </div>
                   </div>
-
-                  <div>
-                    <label htmlFor="contact-person" className="block text-sm font-semibold text-primary mb-2">
-                      Contact Person *
-                    </label>
-                    <input
-                      type="text"
-                      id="contact-person"
-                      name="contactPerson"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="partner-email" className="block text-sm font-semibold text-primary mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="partner-email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="john@hospital.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="partner-phone" className="block text-sm font-semibold text-primary mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="partner-phone"
-                      name="phone"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                      placeholder="(123) 456-7890"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="facility-type" className="block text-sm font-semibold text-primary mb-2">
-                      Facility Type *
-                    </label>
-                    <select
-                      id="facility-type"
-                      name="facilityType"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    >
-                      <option value="">Select facility type</option>
-                      <option value="hospital">Hospital</option>
-                      <option value="clinic">Clinic</option>
-                      <option value="care-center">Care Center</option>
-                      <option value="dialysis">Dialysis Center</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="location-state" className="block text-sm font-semibold text-primary mb-2">
-                      Location/State *
-                    </label>
-                    <select
-                      id="location-state"
-                      name="locationState"
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    >
-                      <option value="">Select state</option>
-                      <option value="TX">Texas</option>
-                      <option value="MS">Mississippi</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="partner-message" className="block text-sm font-semibold text-primary mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      id="partner-message"
-                      name="message"
-                      rows={5}
-                      required
-                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                      placeholder="Tell us about your partnership needs..."
-                    />
-                  </div>
-
-                  <div className="flex gap-3 pt-2">
-                    <button
-                      type="button"
-                      onClick={() => setIsInquiryModalOpen(false)}
-                      className="flex-1 h-12 border-2 border-border text-foreground font-semibold rounded-lg hover:bg-muted transition-all"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 h-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Inquiry'}
-                    </button>
-                  </div>
-                </form>
+                  
+                  {/* White overlay to cover scrollbar area on the right */}
+                  <div className="absolute top-0 right-0 w-4 h-full bg-white pointer-events-none rounded-br-2xl z-20" />
+                </div>
               </div>
             </motion.div>
           </>
