@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -108,34 +107,6 @@ const processSteps = [
 ]
 
 export default function Careers() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // FormSubmit.co will handle the actual submission
-    const form = e.currentTarget
-    
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      
-      // Show success message
-      alert('Thank you for your application! We will review it and contact you within 48 hours.')
-      form.reset()
-    } catch (error) {
-      alert('There was an error submitting your application. Please try emailing us directly at info@geoflexsolutions.com')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="min-h-screen bg-white pt-24">
       {/* SECTION 1: HERO */}
@@ -363,7 +334,7 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* SECTION 6: APPLICATION FORM */}
+      {/* SECTION 6: APPLICATION FORM - GOOGLE FORM EMBEDDED */}
       <section id="application" className="py-24 lg:py-32 bg-white">
         <div className="container-rosenfeld">
           <motion.div
@@ -392,228 +363,22 @@ export default function Careers() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
             variants={fadeInUp}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <form 
-              action="https://formsubmit.co/info@geoflexsolutions.com"
-              method="POST"
-              onSubmit={handleSubmit}
-              className="p-8 lg:p-12 bg-gradient-to-br from-muted/30 to-white border border-border/50 rounded-2xl space-y-6"
-            >
-              {/* Hidden FormSubmit Configuration */}
-              <input type="hidden" name="_subject" value="New Driver Application - Geoflex Solutions" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-
-              {/* Personal Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-semibold text-primary mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    placeholder="John"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-semibold text-primary mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-primary mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-primary mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    placeholder="(123) 456-7890"
-                  />
-                </div>
-              </div>
-
-              {/* License Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="licenseNumber" className="block text-sm font-semibold text-primary mb-2">
-                    Driver's License Number *
-                  </label>
-                  <input
-                    type="text"
-                    id="licenseNumber"
-                    name="licenseNumber"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                    placeholder="DL123456"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="licenseState" className="block text-sm font-semibold text-primary mb-2">
-                    License State *
-                  </label>
-                  <select
-                    id="licenseState"
-                    name="licenseState"
-                    required
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                  >
-                    <option value="">Select state</option>
-                    <option value="TX">Texas</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Vehicle Ownership */}
-              <div>
-                <label className="block text-sm font-semibold text-primary mb-3">
-                  Do you own a vehicle? *
-                </label>
-                <div className="flex gap-6">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="hasVehicle"
-                      value="yes"
-                      required
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="text-foreground">Yes</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="hasVehicle"
-                      value="no"
-                      required
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="text-foreground">No</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Experience */}
-              <div>
-                <label htmlFor="experience" className="block text-sm font-semibold text-primary mb-2">
-                  Years of Driving Experience *
-                </label>
-                <select
-                  id="experience"
-                  name="experience"
-                  required
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                >
-                  <option value="">Select experience</option>
-                  <option value="0-2">0-2 years</option>
-                  <option value="3-5">3-5 years</option>
-                  <option value="6-10">6-10 years</option>
-                  <option value="10+">10+ years</option>
-                </select>
-              </div>
-
-              {/* Medical Transport Experience */}
-              <div>
-                <label className="block text-sm font-semibold text-primary mb-3">
-                  Do you have medical transportation experience?
-                </label>
-                <div className="flex gap-6">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="medicalExperience"
-                      value="yes"
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="text-foreground">Yes</span>
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="medicalExperience"
-                      value="no"
-                      className="w-4 h-4 text-accent focus:ring-accent"
-                    />
-                    <span className="text-foreground">No</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Additional Information */}
-              <div>
-                <label htmlFor="additionalInfo" className="block text-sm font-semibold text-primary mb-2">
-                  Tell us why you'd be a great fit (Optional)
-                </label>
-                <textarea
-                  id="additionalInfo"
-                  name="additionalInfo"
-                  rows={5}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                  placeholder="Share your relevant experience, skills, or what excites you about this opportunity..."
-                />
-              </div>
-
-              {/* Resume Upload Note */}
-              <div className="p-4 bg-accent/5 border border-accent/20 rounded-lg">
-                <p className="text-sm text-foreground">
-                  <strong>Note:</strong> After submitting this form, please email your resume to{' '}
-                  <a href="mailto:info@geoflexsolutions.com" className="text-accent hover:underline">
-                    info@geoflexsolutions.com
-                  </a>{' '}
-                  with the subject line "Driver Application - [Your Name]"
-                </p>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full h-14 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            <div className="bg-white rounded-2xl shadow-medium overflow-hidden">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfurxfm8xbkbdCgz8GNJfqoGvz7-HAuO74GYc_1NO6JreZM1Q/viewform?embedded=true"
+                width="100%" 
+                height="2800"
+                frameBorder={0}
+                marginHeight={0}
+                marginWidth={0}
+                className="w-full"
+                title="Driver Application Form"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Application'}
-              </button>
-
-              <p className="text-sm text-muted-foreground text-center">
-                By submitting this form, you acknowledge our drug-free workplace policy 
-                and consent to background and drug screening checks.
-              </p>
-            </form>
+                Loading…
+              </iframe>
+            </div>
           </motion.div>
         </div>
       </section>
