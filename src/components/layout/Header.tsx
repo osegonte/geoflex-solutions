@@ -40,36 +40,17 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50"
       >
         <div className="container-rosenfeld h-24 flex items-center justify-between">
-          {/* Logo with animated "s" */}
+          {/* Logo */}
           <a 
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
-            className="flex items-center relative"
+            className="flex items-center"
           >
             <img 
               src="/logo.svg" 
-              alt="Geoflex Solution" 
-              className="h-32 w-auto"
+              alt="Geoflex Solutions" 
+              className="h-24 w-auto"
             />
-            {/* Animated "s" */}
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: 0.8,
-                ease: "easeOut"
-              }}
-              className="text-[#1a1a1a] font-normal"
-              style={{ 
-                fontSize: '13px',
-                marginLeft: '0px',
-                position: 'relative',
-                top: '8px'
-              }}
-            >
-              s
-            </motion.span>
           </a>
           
           {/* Center: Navigation - Desktop Only */}
@@ -107,7 +88,7 @@ export default function Header() {
               className="relative text-sm font-medium text-foreground hover:text-primary transition-colors group"
             >
               Partners
-              <span className="absolute -bottom-1 left-0 w-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
             </a>
           </nav>
           
