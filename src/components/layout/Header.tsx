@@ -95,15 +95,6 @@ export default function Header() {
               Partners
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
             </a>
-            
-            <a 
-              href="/insights"
-              onClick={(e) => handleNavClick(e, '/insights')}
-              className="relative text-sm font-medium text-foreground hover:text-primary transition-colors group"
-            >
-              Insights
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
-            </a>
           </nav>
           
           {/* Right: Contact - Desktop / Hamburger - Mobile */}

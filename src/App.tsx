@@ -3,7 +3,6 @@ import Header from './components/layout/Header'
 import Footer from './components/sections/Footer'
 import Home from './pages/Home'
 import Careers from './pages/Careers'
-import Insights from './pages/Insights'  // ADD THIS
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/insights" element={<Insights />} />  {/* ADD THIS */}
         </Routes>
         <Footer />
       </div>

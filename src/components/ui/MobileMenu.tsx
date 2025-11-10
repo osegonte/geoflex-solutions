@@ -90,12 +90,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               >
                 Partners
               </button>
-              <button
-                onClick={() => handleNavClick('/insights')}
-                className="px-4 py-3 text-foreground hover:text-accent hover:bg-accent/5 rounded-lg transition-all font-medium text-left"
-              >
-                Insights
-              </button>
               
               <div className="h-px bg-border my-4" />
               

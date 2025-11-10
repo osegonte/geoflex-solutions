@@ -5,111 +5,45 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 }
 }
 
-const benefits = [
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: 'Competitive Pay',
-    description: 'Industry-leading compensation with regular raises and performance bonuses'
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: 'Flexible Scheduling',
-    description: 'Choose shifts that work with your lifestyle - full-time and part-time available'
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: 'Health Benefits',
-    description: 'Comprehensive health, dental, and vision insurance for you and your family'
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    ),
-    title: 'Training & Development',
-    description: 'Ongoing professional development and certification assistance'
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    title: 'Supportive Team',
-    description: 'Join a compassionate team dedicated to making a difference'
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    title: 'Modern Fleet',
-    description: 'Drive well-maintained, comfortable vehicles with the latest safety features'
-  }
-]
-
 const requirements = [
-  'Valid driver\'s license (Class C minimum)',
-  'Clean driving record (no major violations in past 3 years)',
-  'High school diploma or GED equivalent',
-  'CPR and First Aid certification (or willingness to obtain)',
-  'Pass drug screening and background check',
-  'Excellent communication and customer service skills',
-  'Physical ability to assist passengers as needed',
-  'Reliable and punctual with strong work ethic'
-]
-
-const processSteps = [
-  {
-    number: '1',
-    title: 'Submit Application',
-    description: 'Complete our online application form with your information and experience'
-  },
-  {
-    number: '2',
-    title: 'Initial Screening',
-    description: 'Our team reviews your application and contacts qualified candidates within 48 hours'
-  },
-  {
-    number: '3',
-    title: 'Interview',
-    description: 'Meet with our hiring team to discuss your experience and learn more about the role'
-  },
-  {
-    number: '4',
-    title: 'Background Check',
-    description: 'Complete drug screening, background check, and driving record verification'
-  },
-  {
-    number: '5',
-    title: 'Training',
-    description: 'Participate in our comprehensive training program covering safety, procedures, and customer service'
-  },
-  {
-    number: '6',
-    title: 'Start Driving',
-    description: 'Begin your rewarding career helping patients get to their medical appointments safely'
-  }
+  'Driver\'s License',
+  'Vehicle Registration Document',
+  'Drug Test',
+  'Defensive Driving',
+  'Driving Record',
+  'CPR & First Aid Training',
+  'Insurance',
+  'SSN Card'
 ]
 
 export default function Careers() {
+  const handleEmailDocuments = () => {
+    const subject = encodeURIComponent('Driver Application Documents')
+    const body = encodeURIComponent(`Hello,
+
+Please find attached my application documents:
+
+☐ Driver's License
+☐ Vehicle Registration Document
+☐ Drug Test
+☐ Defensive Driving Certificate
+☐ Driving Record
+☐ CPR & First Aid Training Certificate
+☐ Insurance
+☐ SSN Card
+
+Name: 
+Phone: 
+Email: 
+
+Thank you!`)
+    
+    window.location.href = `mailto:geoflexsolutions@gmail.com?subject=${subject}&body=${body}`
+  }
+
   return (
     <div className="min-h-screen bg-white pt-24">
-      {/* SECTION 1: HERO */}
+      {/* HERO SECTION */}
       <section className="py-20 lg:py-32 bg-gradient-to-b from-primary/5 to-white">
         <div className="container-rosenfeld">
           <motion.div
@@ -125,25 +59,14 @@ export default function Careers() {
             <h1 className="text-5xl lg:text-6xl font-serif font-bold text-primary mb-6 leading-tight">
               Drive With Geoflex
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              Make a meaningful difference in people's lives while building a rewarding career 
-              in non-emergency medical transportation. We're looking for compassionate, 
-              reliable drivers to join our growing team.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Join our team of professional drivers making a difference in people's lives.
             </p>
-            <a 
-              href="#application"
-              className="inline-flex items-center gap-2 h-14 px-10 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all"
-            >
-              Apply Now
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
           </motion.div>
         </div>
       </section>
 
-      {/* SECTION 2: BENEFITS */}
+      {/* APPLICATION FORM SECTION */}
       <section className="py-24 lg:py-32 bg-white">
         <div className="container-rosenfeld">
           <motion.div
@@ -154,143 +77,139 @@ export default function Careers() {
             variants={fadeInUp}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <p className="text-sm font-semibold text-accent tracking-wider uppercase mb-4">
-              Why Join Us
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
-              Benefits & Perks
+            <h2 className="text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight mb-6">
+              Driver Application Form
             </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Complete the form below to start your application process.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
-                variants={fadeInUp}
-              >
-                <div className="h-full p-8 bg-gradient-to-br from-muted/30 to-white border border-border/50 rounded-2xl hover:shadow-medium transition-all duration-300">
-                  <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-6">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: REQUIREMENTS */}
-      <section className="py-24 lg:py-32 bg-gradient-to-b from-white to-muted/30">
-        <div className="container-rosenfeld">
+          {/* GOOGLE FORM EMBED */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <p className="text-sm font-semibold text-accent tracking-wider uppercase mb-4">
-              Qualifications
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
-              Driver Requirements
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            variants={fadeInUp}
+            className="max-w-4xl mx-auto mb-16"
+          >
+            <div className="bg-white rounded-2xl shadow-medium overflow-hidden">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfurxfm8xbkbdCgz8GNJfqoGvz7-HAuO74GYc_1NO6JreZM1Q/viewform?embedded=true"
+                width="100%" 
+                height="1742"
+                frameBorder={0}
+                marginHeight={0}
+                marginWidth={0}
+                className="w-full"
+                title="Driver Application Form"
+              >
+                Loading…
+              </iframe>
+            </div>
+          </motion.div>
+
+          {/* REQUIRED DOCUMENTS SECTION */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
             variants={fadeInUp}
             className="max-w-4xl mx-auto"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {requirements.map((requirement, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-white border border-border/50 rounded-xl">
-                  <div className="flex-shrink-0 w-6 h-6 bg-accent rounded-full flex items-center justify-center mt-0.5">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground leading-relaxed">{requirement}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            <div className="p-8 lg:p-12 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-accent/20 rounded-2xl">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-serif font-semibold text-primary mb-4">
+                  Required Documents
+                </h3>
+                <p className="text-muted-foreground">
+                  Please prepare the following documents to complete your application
+                </p>
+              </div>
 
-      {/* SECTION 4: APPLICATION PROCESS */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container-rosenfeld">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <p className="text-sm font-semibold text-accent tracking-wider uppercase mb-4">
-              How It Works
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight">
-              Application Process
-            </h2>
-          </motion.div>
-
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
-                  variants={fadeInUp}
-                  className="relative"
-                >
-                  <div className="h-full p-8 bg-gradient-to-br from-primary/5 to-accent/5 border border-border/50 rounded-2xl">
-                    <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
-                      {step.number}
-                    </div>
-                    <h3 className="text-xl font-semibold text-primary mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                  
-                  {/* Connector Arrow (hidden on mobile, last item) */}
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-accent/30">
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              {/* Requirements List */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                {requirements.map((requirement, index) => (
+                  <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-lg">
+                    <div className="flex-shrink-0 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                  )}
-                </motion.div>
-              ))}
+                    <span className="text-foreground font-medium">{requirement}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* EMAIL DOCUMENTS BUTTON */}
+              <div className="text-center mb-8">
+                <button
+                  onClick={handleEmailDocuments}
+                  className="inline-flex items-center gap-3 h-16 px-12 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all text-lg hover:shadow-strong"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Email Your Documents
+                </button>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Click the button above to open your email client and send all required documents to:<br />
+                  <a href="mailto:geoflexsolutions@gmail.com" className="text-accent font-semibold hover:underline">
+                    geoflexsolutions@gmail.com
+                  </a>
+                </p>
+              </div>
+
+              {/* FINGERPRINT INSTRUCTIONS */}
+              <div className="p-6 bg-white border-2 border-primary/20 rounded-xl">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-primary mb-3">
+                      Fingerprint Requirement
+                    </h4>
+                    <p className="text-foreground leading-relaxed mb-3">
+                      Please make time for fingerprints at the sheriff county office:
+                    </p>
+                    <div className="space-y-2 text-foreground">
+                      <p className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span><strong>Location:</strong> 221 N Timber St, Brandon, MS 39042</span>
+                      </p>
+                      <p className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span><strong>Cost:</strong> FREE</span>
+                      </p>
+                      <p className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span><strong>Ask for:</strong> Becky</span>
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-3">
+                        Mississippi State
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* SECTION 5: DRUG-FREE WORKPLACE POLICY */}
+      {/* DRUG-FREE WORKPLACE POLICY */}
       <section className="py-16 bg-accent/5">
         <div className="container-rosenfeld">
           <motion.div
@@ -317,67 +236,12 @@ export default function Careers() {
                     work environment for all employees and the patients we serve. As a medical 
                     transportation provider, safety is our top priority.
                   </p>
-                  <p className="text-foreground leading-relaxed mb-4">
+                  <p className="text-foreground leading-relaxed">
                     All applicants must successfully pass a comprehensive drug screening as part 
-                    of the hiring process. We conduct random drug testing throughout employment 
-                    and maintain a zero-tolerance policy for drug and alcohol use during work hours 
-                    or while operating company vehicles.
-                  </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    This policy ensures the safety of our drivers, passengers, and community while 
-                    maintaining the highest standards of professional medical transportation services.
+                    of the hiring process.
                   </p>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION 6: APPLICATION FORM - GOOGLE FORM EMBEDDED */}
-      <section id="application" className="py-24 lg:py-32 bg-white">
-        <div className="container-rosenfeld">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            variants={fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <p className="text-sm font-semibold text-accent tracking-wider uppercase mb-4">
-              Ready to Join?
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-serif font-semibold text-primary leading-tight mb-6">
-              Driver Application Form
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Complete the form below and we'll get back to you within 48 hours. 
-              All fields marked with * are required.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="bg-white rounded-2xl shadow-medium overflow-hidden">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfurxfm8xbkbdCgz8GNJfqoGvz7-HAuO74GYc_1NO6JreZM1Q/viewform?embedded=true"
-                width="100%" 
-                height="2800"
-                frameBorder={0}
-                marginHeight={0}
-                marginWidth={0}
-                className="w-full"
-                title="Driver Application Form"
-              >
-                Loading…
-              </iframe>
             </div>
           </motion.div>
         </div>

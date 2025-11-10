@@ -57,31 +57,20 @@ export default function Hero() {
               Safe · Punctual · Compassionate
             </motion.p>
             
-            {/* CTAs - Mobile Optimized */}
+            {/* CTAs - ONLY "JOIN US AS A DRIVER" BUTTON */}
             <motion.div 
               variants={fadeInUp}
               transition={{ duration: 0.8, ease: 'easeOut' }}
               className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-start pt-4"
             >
               <motion.button
+                onClick={() => navigate('/careers')}
                 whileHover={{ 
                   y: -2, 
                   boxShadow: '0 10px 25px rgb(241 119 50 / 0.25)' 
                 }}
                 whileTap={{ scale: 0.98 }}
                 className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-medium transition-all text-base"
-              >
-                Book a Ride
-              </motion.button>
-              
-              <motion.button
-                onClick={() => navigate('/careers')}
-                whileHover={{ 
-                  y: -2, 
-                  backgroundColor: 'rgb(43 63 92 / 0.03)' 
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="h-14 px-10 bg-white border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all text-base flex items-center justify-center"
               >
                 Join Us as a Driver
               </motion.button>

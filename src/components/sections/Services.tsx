@@ -100,15 +100,6 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-
-        <div className="text-center mt-16">
-          <a href="/services" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300">
-            View All Services
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
       </div>
     </section>
   )
