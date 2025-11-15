@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <img src="/logo.svg" alt="Geoflex Solutions" className="h-12 w-auto mb-4 brightness-0 invert" />
             <p className="text-white/70 text-sm leading-relaxed">
-              Premier non-emergency medical transportation services across Texas and Mississippi.
+              Premier Non-Emergency Medical Transportation Services Across Texas And Mississippi.
             </p>
           </div>
 
@@ -77,15 +77,6 @@ export default function Footer() {
                   className="text-white/70 hover:text-accent transition-colors"
                 >
                   Partners
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/insights"
-                  onClick={(e) => handleNavClick(e, '/insights')}
-                  className="text-white/70 hover:text-accent transition-colors"
-                >
-                  Insights
                 </a>
               </li>
               <li>
@@ -132,6 +123,15 @@ export default function Footer() {
                   info@geoflexsolutions.com
                 </a>
               </li>
+              <li className="flex items-start gap-2">
+                <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6M9 11h6M9 15h6" />
+                </svg>
+                <span className="text-white/70">
+                  Fax: <a href="tel:+13462458277" className="hover:text-accent transition-colors">+1 (346) 245-8277</a>
+                </span>
+              </li>
             </ul>
           </div>
         </div>
@@ -139,10 +139,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-            <p>© 2025 Geoflex Solutions LLC. All rights reserved.</p>
+            <p>© 2025 Geoflex Solutions LLC. All Rights Reserved.</p>
             <div className="flex gap-6">
               <a href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-accent transition-colors">Terms of Service</a>
+              <a href="/terms" className="hover:text-accent transition-colors">Terms Of Service</a>
             </div>
           </div>
         </div>
