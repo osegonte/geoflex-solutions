@@ -38,7 +38,7 @@ Email:
 
 Thank you!`)
     
-    window.location.href = `mailto:geoflexsolutions@gmail.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:credentials@geoflexsolutions.com?subject=${subject}&body=${body}`
   }
 
   return (
@@ -156,8 +156,8 @@ Thank you!`)
                 </button>
                 <p className="text-sm text-muted-foreground mt-4">
                   Click the button above to open your email client and send all required documents to:<br />
-                  <a href="mailto:geoflexsolutions@gmail.com" className="text-accent font-semibold hover:underline">
-                    geoflexsolutions@gmail.com
+                  <a href="mailto:credentials@geoflexsolutions.com" className="text-accent font-semibold hover:underline">
+                    credentials@geoflexsolutions.com
                   </a>
                 </p>
               </div>
